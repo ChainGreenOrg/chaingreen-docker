@@ -1,10 +1,10 @@
-name: Build official Chia Docker Image
+name: Build official Chaingreen Docker Image
 
 on:
   workflow_dispatch:
     inputs:
       upstream_branch:
-        description: 'chia branch name to use'
+        description: 'chaingreen branch name to use'
         required: true
         default: 'dev'
       image_tag:
@@ -39,8 +39,8 @@ jobs:
         id: get_reg_token
         run: |
           sudo apt-get -y install jq
-          echo "curl -X POST -H "Authorization: token ${{ secrets.ORG_ADMIN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/orgs/Chia-Network/actions/runners/registration-token | jq -r '.token'"
-          echo "::set-output name=reg_token::$(curl -X POST -H "Authorization: token ${{ secrets.ORG_ADMIN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/orgs/Chia-Network/actions/runners/registration-token | jq -r '.token')"
+          echo "curl -X POST -H "Authorization: token ${{ secrets.ORG_ADMIN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/orgs/ChainGreenOrg/actions/runners/registration-token | jq -r '.token'"
+          echo "::set-output name=reg_token::$(curl -X POST -H "Authorization: token ${{ secrets.ORG_ADMIN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/orgs/ChainGreenOrg/actions/runners/registration-token | jq -r '.token')"
 
       - name: Build docker image and push to github packages
         uses: docker/build-push-action@v2
@@ -51,4 +51,4 @@ jobs:
           push: true
           build-args: |
             "BRANCH=${{ github.event.inputs.upstream_branch }}"
-          tags: ghcr.io/chia-network/chia:${{ github.event.inputs.image_tag }}
+          tags: ghcr.io/ChainGreenOrg/chaingreen:${{ github.event.inputs.image_tag }}

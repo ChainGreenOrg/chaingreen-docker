@@ -1,4 +1,4 @@
-name: Test official Chia Docker Image
+name: Test official Chaingreen Docker Image
 
 on:
   pull_request:
@@ -15,8 +15,8 @@ jobs:
           result-encoding: string
           script: |
             const releases = await github.repos.listReleases({
-              owner: 'Chia-Network',
-              repo: 'chia-blockchain',
+              owner: 'ChainGreenOrg',
+              repo: 'chaingreen-blockchain',
             });
             return releases.data[0].tag_name;
       - run: docker build --build-arg BRANCH="${{ steps.tag.outputs.result }}" .
