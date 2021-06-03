@@ -46,4 +46,4 @@ jobs:
         run: docker build --no-cache --build-arg branch=${{ github.event.inputs.upstream_branch }} -t ghcr.io/ChainGreenOrg/chaingreen:${{ steps.set_tag.outputs.tag }}-arm .
 
       - name: Push to github packages
-        run: docker push ghcr.io/ChainGreenOrg/chaingreen:${{ steps.set_tag.outputs.tag }}-arm
+        run: docker push ghcr.io/chaingreenorg/chaingreen:${{ steps.set_tag.outputs.tag }}-arm
