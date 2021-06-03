@@ -33,7 +33,12 @@ done
 
 sed -i 's/localhost/127.0.0.1/g' ~/.chaingreen/mainnet/config/config.yaml
 
-if [[ ${farmer} == 'true' ]]; then
+if [[ ${all} == 'true' ]]; then
+  sh install-timelord.sh
+  chaingreen start all
+elif [[ ${introducer} == 'true' ]]; then
+  chaingreen start introducer
+elif [[ ${farmer} == 'true' ]]; then
   chaingreen start farmer-only
 elif [[ ${harvester} == 'true' ]]; then
   if [[ -z ${farmer_address} || -z ${farmer_port} || -z ${ca} ]]; then
