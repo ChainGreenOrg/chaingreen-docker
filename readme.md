@@ -2,7 +2,7 @@
 
 ## Basic Startup
 ```
-docker run --name <container-name> -d ghcr.io/ChainGreenOrg/chaingreen:latest
+docker run --name <container-name> -d ghcr.io/chaingreenorg/chaingreen:latest
 (optional -v /path/to/plots:/plots)
 ```
 #### set the timezone for the container (optional, defaults to UTC)
