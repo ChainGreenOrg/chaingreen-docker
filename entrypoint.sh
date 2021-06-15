@@ -36,6 +36,10 @@ sed -i 's/localhost/127.0.0.1/g' ~/.chaingreen/mainnet/config/config.yaml
 if [[ ${all} == 'true' ]]; then
   sh install-timelord.sh
   chaingreen start all
+elif [[ ${node} == 'true' ]]; then
+  chaingreen start node
+elif [[ ${node_service} == 'true']]; then
+  chaingreen_full_node
 elif [[ ${introducer} == 'true' ]]; then
   chaingreen start introducer
 elif [[ ${farmer} == 'true' ]]; then
