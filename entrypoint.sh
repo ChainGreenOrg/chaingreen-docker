@@ -38,7 +38,7 @@ if [[ ${all} == 'true' ]]; then
   chaingreen start all
 elif [[ ${node} == 'true' ]]; then
   chaingreen start node
-elif [[ ${node_service} == 'true']]; then
+elif [[ ${node_service} == 'true' ]]; then
   chaingreen_full_node
 elif [[ ${introducer} == 'true' ]]; then
   chaingreen start introducer
